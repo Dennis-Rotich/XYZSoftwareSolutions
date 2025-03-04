@@ -190,9 +190,13 @@ public:
 
     // Destructor
     ~EmployeeManagementSystem(){
-        for(Employee* emp: employees){
-            delete emp;
+         cout << "Destroying Employee Management System..." << endl;
+        for (Employee* emp : employees) {
+            delete emp; // Free allocated memory
         }
+        employees.clear();
+        cout << "All Employees Deleted." << endl;
+
     }
 
 };
@@ -202,9 +206,9 @@ int main()
     EmployeeManagementSystem ems;
 
     // Adding Employees
-    ems.addEmployee(new Manager("Alice Johnson", "MGR101", 90000, "IT", 15000));
-    ems.addEmployee(new Engineer("Bob Smith", "ENG202", 75000, "Software Engineering", "AI Project"));
-    ems.addEmployee(new Employee("Charlie Brown", "EMP303", 50000));
+    ems.addEmployee(new Manager("Keith Kipruto", "MGR101", 90000, "IT", 15000));
+    ems.addEmployee(new Engineer("Bob Wafula", "ENG202", 75000, "Software Engineering", "AI Project"));
+    ems.addEmployee(new Employee("Charlie Kioko", "EMP303", 50000));
 
     // Display all employees
     cout << "\nDisplaying All Employees:\n";
@@ -213,5 +217,6 @@ int main()
     // Search for an employee
     cout << "\nSearching for Employee ID 'ENG202':\n";
     ems.searchEmployeeByID("ENG202");
+    delete &ems;
     return 0;
 }
